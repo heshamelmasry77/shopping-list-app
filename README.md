@@ -1,7 +1,7 @@
 # Shopping List APP
 This is an APP to domostrate some features of VUE JS
 
-![img](http://i.imgur.com/PPxKSgR.png)
+![img](https://i.imgur.com/DimYFmU.png)
 
 ## Project setup
 ```
