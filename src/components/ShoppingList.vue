@@ -2,8 +2,8 @@
   <div class="shoppingList">
     <h1>{{ header }}</h1>
     <label>
-      <input v-model="newItem" type="text" placeholder="Add new item" @keydown.enter="items.push(newItem)"/>
-      <button @click="items.push(newItem)">Save Item</button>
+      <input v-model="newItem" type="text" placeholder="Add new item" @keydown.enter="saveItem"/>
+      <button @click="saveItem">Save Item</button>
     </label>
     <ul v-for="(item, index) in items" :key="index">
       <li>{{ item }}</li>
@@ -25,6 +25,11 @@ export default {
         '2 apples',
         '5 oranges'
       ]
+    }
+  },
+  methods: {
+    saveItem() {
+      this.items.push(this.newItem)
     }
   }
 }
