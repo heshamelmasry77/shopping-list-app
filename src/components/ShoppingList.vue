@@ -1,13 +1,13 @@
 <template>
-  <div class="shoppingList">
+  <div id="shopping-list">
     <div>
-      <h1>{{ header }}</h1>
-      <button v-if="state === 'default'" @click="changeState('edit')">Add Item</button>
-      <button v-else @click="changeState('default')">Cancel</button>
+      <h1 class="header">{{ header }}</h1>
+      <button v-if="state === 'default'" @click="changeState('edit')" class="btn btn-primary">Add Item</button>
+      <button v-else @click="changeState('default')" class="btn btn-cancel">Cancel</button>
     </div>
-    <label v-if="state === 'edit'">
+    <label v-if="state === 'edit'" class="add-item-form">
       <input v-model="newItem" type="text" placeholder="Add new item" @keydown.enter="saveItem"/>
-      <button :disabled="!newItem" @click="saveItem">Save Item</button>
+      <button :disabled="!newItem" @click="saveItem" class="btn btn-primary">Save Item</button>
     </label>
     <ul>
       <li v-for="(item, index) in items" :key="index" :class="[item.purchased ? 'strikeout' :'']"
@@ -57,32 +57,102 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.shoppingList {
-  background-color: lightgray;
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 15px;
-  text-align: left;
+
+#shopping-list {
+  background: #fff;
+  padding: 2rem;
+  margin: 1rem;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  width: 95%;
+  max-width: 900px;
 }
+
 h1 {
-  text-transform: uppercase;
-  font-weight: bolder;
-  text-align: left;
+  color: #3d4852;
 }
-input {
-  padding: 10px;
-  border: none;
-  display: inline-block;
-  width: 200px;
-}
+
 ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
 }
-li {
-  text-transform: capitalize;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: left;
+
+a {
+  color: #6cb2eb;
+  font-size: 1.25rem;
+  transition: all .1s ease-in;
+  margin-top: .5rem;
+  display: block;
+}
+
+a:hover {
+  color: #3490dc;
+}
+
+li, p {
+  display: flex;
+  align-items: center;
+  line-height: 1.75;
+  letter-spacing: .5px;
+  color: #3d4852;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all .1s ease-in;
+}
+
+li:hover {
+  color: #22292f;
+}
+
+li input {
+  margin: 0 .5rem 0;
+}
+
+#shopping-list > input, #shopping-list > select {
+  width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+  border: 1px solid #f1f5f8;
+  color: #606f7b;
+  padding: .5rem .75rem;
+  box-sizing: border-box;
+  font-size: 1rem;
+  letter-spacing: .5px;
+  margin: .5rem 0
+}
+
+.add-item-form, .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-item-form input {
+  width: 70%;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+  border: 1px solid #f1f5f8;
+  color: #606f7b;
+  padding: .5rem .75rem;
+  box-sizing: border-box;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin: .5rem 0;
+}
+
+
+/*CLASSES FOR LABELS*/
+
+.strikeout {
+  text-decoration: line-through;
+  color: #b8c2cc;
+}
+
+.strikeout:hover {
+  color: #8795a1;
+}
+
+.priority {
+  color: #de751f;
 }
 </style>
