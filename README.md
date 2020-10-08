@@ -1,6 +1,6 @@
 # Shopping List APP
 This is an APP to domostrate some features in Vue.js
-### Try Deployed version here: https://safe-anchorage-24865.herokuapp.com/
+### Try Deployed version here: https://shopping-list-app-vuejs-hesh.herokuapp.com/
 
 ![img](https://i.imgur.com/DimYFmU.png)
 
