@@ -5,10 +5,10 @@ This is an APP to domostrate some features in Vue.js
 
 Features and thing i did:
 ```html
-<b>Vue Directives, Loops and Conditional Rendering</b>
-<b>Handling User Inputs</b>
-<b>Vue.js Methods and Computed Properties</b>
-<b>Attribute and Class Bindings</b>
+1. Vue Directives, Loops and Conditional Rendering
+2. Handling User Inputs
+3. Vue.js Methods and Computed Properties
+4. Attribute and Class Bindings
 ```
 
 
