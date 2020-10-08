@@ -1,7 +1,7 @@
 <template>
   <div id="shopping-list">
-    <div>
-      <h1 class="header">{{ header }}</h1>
+    <div class="header">
+      <h1>{{ header }}</h1>
       <button v-if="state === 'default'" @click="changeState('edit')" class="btn btn-primary">Add Item</button>
       <button v-else @click="changeState('default')" class="btn btn-cancel">Cancel</button>
     </div>
@@ -10,7 +10,8 @@
       <button :disabled="!newItem" @click="saveItem" class="btn btn-primary">Save Item</button>
     </label>
     <ul>
-      <li v-for="(item, index) in items" :key="index" :class="[item.purchased ? 'strikeout' :'']"
+      <li v-for="(item, index) in reversedItems" :key="index"
+          :class="[item.purchased ? 'strikeout' :'', item.highPriority ? 'priority' :'']"
           @click="togglePurchased(item)">{{ item.label }}
       </li>
     </ul>
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'ShoppingList',
   props: {
@@ -29,13 +31,21 @@ export default {
       state: 'default',
       newItem: '',
       items: [
-        {label: '10 eggs',purchased: false,highPriority: false},
+        {label: '10 eggs',purchased: false,highPriority: true},
         {label: '2 apples',purchased: false,highPriority: false},
         {label: '6 oranges',purchased: false,highPriority: false}
       ]
     }
   },
+  computed: {
+    // to change presentation of data
+    // only for transforming data for presenting  and they shouldn't change the data
+    reversedItems() {
+      return this.items.slice(0).reverse();
+    }
+  },
   methods: {
+    // to change data
     saveItem() {
       this.items.push({
         label: this.newItem,
@@ -70,6 +80,7 @@ export default {
 
 h1 {
   color: #3d4852;
+  text-transform: uppercase;
 }
 
 ul {
